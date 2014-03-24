@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans';
+  background: url('../img/tiny_grid.png');
+  /*cursor: none;*/
+}
+
+#title {
+  font-size: 48px;
+  margin-top: 100px;
+  margin-left: 140px;
+}
+
+#chart{
+  width: 100%;
+  height: 1080px;
+  z-index: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.line {
+  stroke: #000;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.station {
+}
+
+.station rect {
+  stroke: #000;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: #fff;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation: pulsate 2s ease-out;
+  -webkit-animation-iteration-count: infinite; 
+}
+
+@-webkit-keyframes pulsate {
+  0% {-webkit-transform: scale(1.0);}
+  50% {-webkit-transform: scale(1.3); }
+  100% {-webkit-transform: scale(1.0);}
+}
+
+@-webkit-keyframes movein {
+  0% {-webkit-transform: translate(-1920, 0)}
+  100% {-webkit-transform: translate(1920, 0);}
+}
+
+.S7 {
+  stroke: #604D86;
+}
+
+.S2 {
+  stroke: #D35B26;
+}
+.S3 {
+  stroke: #287EB0;
+}
+.U6 {
+  stroke: #655188;
+}
+.U9 {
+  stroke: #CB6A27;
+}
+.U7 {
+  stroke: #287EB0;
+}
+.S41 {
+  stroke: #622A24;
+}
+.S42 {
+  stroke: #9A4F2C;
+}
