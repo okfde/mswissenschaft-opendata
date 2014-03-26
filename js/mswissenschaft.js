@@ -64,6 +64,34 @@
       width: 30,
       delay: 1
     },
+    spandau: {
+      x: parsePercent('1%', w),
+      y: parsePercent('38.5%', h),
+      height: 30,
+      width: 30,
+      delay: 1
+    },
+    ruhleben: {
+      x: parsePercent('4.2%', w),
+      y: parsePercent('2%', h),
+      height: 30,
+      width: 30,
+      delay: 1
+    },
+    oranienburg: {
+      x: parsePercent('37%', w),
+      y: parsePercent('3.5%', h),
+      height: 30,
+      width: 30,
+      delay: 1
+    },
+    bernau: {
+      x: parsePercent('61%', w),
+      y: parsePercent('3.5%', h),
+      height: 30,
+      width: 30,
+      delay: 1
+    },
     schoeneberg: {
       x: parsePercent('35%', w),
       y: parsePercent('76.5%', h),
@@ -71,6 +99,42 @@
       width: 30,
       delay: 1000,
       rotate: '45'
+    },
+    berlinerstrasse: {
+      x: parsePercent('40%', w),
+      y: parsePercent('67.5%', h),
+      height: 35,
+      width: 30,
+      delay: 300,
+      rotate: '45'
+    },
+    mehringdamm: {
+      x: parsePercent('59.25%', w),
+      y: parsePercent('68%', h),
+      height: 30,
+      width: 30,
+      delay: 1400,
+    },
+    tempelhof: {
+      x: parsePercent('59.25%', w),
+      y: parsePercent('77.5%', h),
+      height: 30,
+      width: 30,
+      delay: 1600,
+    },
+    altmariendorf: {
+      x: parsePercent('59.25%', w),
+      y: parsePercent('95%', h),
+      height: 30,
+      width: 30,
+      delay: 2000,
+    },
+    rudow: {
+      x: parsePercent('85%', w),
+      y: parsePercent('95%', h),
+      height: 30,
+      width: 30,
+      delay: 2000,
     },
     steglitz: {
       x: parsePercent('22%', w),
@@ -93,16 +157,42 @@
       height: 40,
       width: 30,
       delay: 500,
-      // rotate: '45'
     },
     friedrichstrasse: {
-      x: parsePercent('49.2%', w),
+      x: parsePercent('49.1%', w),
       y: parsePercent('33.25%', h),
       height: 40,
       width: 40,
       delay: 500,
-      // rotate: '45'
-    }
+    },
+    erkner: {
+      x: parsePercent('97%', w),
+      y: parsePercent('84.5%', h),
+      height: 30,
+      width: 30,
+      delay: 2000,
+    },
+    hoenow: {
+      x: parsePercent('97%', w),
+      y: parsePercent('41.5%', h),
+      height: 30,
+      width: 30,
+      delay: 2000,
+    },
+    ahrensfelde: {
+      x: parsePercent('97%', w),
+      y: parsePercent('16.5%', h),
+      height: 30,
+      width: 30,
+      delay: 2000,
+    },
+    gesundbrunnen: {
+      x: parsePercent('49.5%', w),
+      y: parsePercent('23%', h),
+      height: 30,
+      width: 30,
+      delay: 400,
+    },
   };
 
   var svg = d3.select('#chart')
@@ -160,51 +250,74 @@
 
   var line = d3.svg.line();
 
-  var paths = {}, totalLength;
+  var displayModal = function(name){
+    return function(){
+      $('.modal .modal-title').text($('#' + name + ' > h1').text());
+      $('.modal .modal-body').html($('#' + name + ' > div').html());
+      $('#modal').modal('show');
+      svg.selectAll('.' + name).classed('seen', true);
+    };
+  };
 
-  for (var key in data) {
-    data[key] = generate(data[key]);
+  $(document).on('hidden.bs.modal', function(){
+    if ($('.station:not(.seen)').length === 0) {
+      svg.selectAll('*').remove();
+      initPlan();
+    }
+  });
 
-    paths[key] = svg.append('path')
-      .attr('d', line(data[key]))
-      .attr('class', 'line ' + key);
+  var initPlan = function(){
 
-    totalLength = paths[key].node().getTotalLength();
+    var paths = {}, totalLength;
 
-    paths[key]
-      .attr('stroke-dasharray', totalLength + ' ' + totalLength)
-      .attr('stroke-dashoffset', totalLength)
-      .transition()
-        .duration(2000)
-        .ease('linear')
-        .attr('stroke-dashoffset', 0);
+    for (var key in data) {
+      data[key] = generate(data[key]);
 
-  }
+      paths[key] = svg.append('path')
+        .attr('d', line(data[key]))
+        .attr('class', 'line ' + key);
 
-  var station;
-  for (var name in stations) {
-    station = stations[name];
-    svg.append('g')
-      .attr('class', 'station ' + name)
-      .attr('transform', 'translate(' + station.x + ' ' + station.y +') rotate(' + (station.rotate || '0') + ' 0 0)')
-    .append('rect')
-      .attr('width', station.width)
-      .attr('height', station.height)
-      .attr('rx', 5)
-      .attr('ry', 5)
-      .style('opacity', 0)
-      // .style('-webkit-transform', 'rotate(' + (station.rotate || '0') + 'deg)')
-      // .attr('transform', 'rotate(45)')
-      .transition()
-        .delay(station.delay || 500)
-        .duration(1)
-        .ease('linear')
-        .style('opacity', 1);
-    $('.' + name).popover({
-      title: '<h1>Title</h1>',
-      content: '<p>This is the super content here right here',
-      html: true, container: 'body'
-    });
-  }
+      totalLength = paths[key].node().getTotalLength();
+
+      paths[key]
+        .attr('stroke-dasharray', totalLength + ' ' + totalLength)
+        .attr('stroke-dashoffset', totalLength)
+        .transition()
+          .duration(2000)
+          .ease('linear')
+          .attr('stroke-dashoffset', 0);
+
+    }
+
+    var station;
+
+    for (var name in stations) {
+      station = stations[name];
+      svg.append('g')
+        .attr('class', 'station ' + name)
+        .attr('transform', 'translate(' + station.x + ' ' + station.y +') rotate(' + (station.rotate || '0') + ' 0 0)')
+      .append('rect')
+        .attr('width', station.width)
+        .attr('height', station.height)
+        .attr('rx', 5)
+        .attr('ry', 5)
+        .style('opacity', 0)
+        // .style('-webkit-transform', 'rotate(' + (station.rotate || '0') + 'deg)')
+        // .attr('transform', 'rotate(45)')
+        .on('click', displayModal(name))
+        .transition()
+          .delay(station.delay || 500)
+          .duration(1)
+          .ease('linear')
+          .style('opacity', 1);
+      // $('.' + name).popover({
+      //   title: '<h1>' + $('#' + name + ' > h1').text() + '</h1>',
+      //   content: $('#' + name + ' > div').html(),
+      //   html: true, container: 'body'
+      // });
+    }
+  };
+
+  initPlan();
 
 }());

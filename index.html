@@ -10,21 +10,29 @@
   <div id="chart"></div>
   <h1 id="title">Open Data im Nahverkehr</h1>
 
+  <div class="hide">
+
+  <div id="potsdam">
+    <h1>Fahrplandaten</h1>
+    <div>
+      Seit Februar 2013 sind die Fahrplaninformationen aller Berliner und Brandenburger Verkehrsbetriebe frei nutzbar. Sie liegen als Rohdatensatz vor. So werden Informationen bezeichnet die in Dateiformaten vorliegen, die jeder ohne Spezialprogramme auslesen und bearbeiten kann.
+
+      In diesem Beispiel sind es vorallem Informationen zu Haltestellen und Abfahrtszeiten.
+
+      Quelle: www.vbb.de/OpenData
+    </div>
+  </div>
+
+  </div>
   <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="myModalLabel"></h4>
         </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        <div class="modal-body"></div>
       </div>
     </div>
   </div>
