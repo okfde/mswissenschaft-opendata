@@ -305,19 +305,12 @@
         .attr('rx', 5)
         .attr('ry', 5)
         .style('opacity', 0)
-        // .style('-webkit-transform', 'rotate(' + (station.rotate || '0') + 'deg)')
-        // .attr('transform', 'rotate(45)')
-        .on('click', displayModal(name))
+        .on('mousedown', displayModal(name))
         .transition()
           .delay(station.delay || 500)
           .duration(1)
           .ease('linear')
           .style('opacity', 1);
-      // $('.' + name).popover({
-      //   title: '<h1>' + $('#' + name + ' > h1').text() + '</h1>',
-      //   content: $('#' + name + ' > div').html(),
-      //   html: true, container: 'body'
-      // });
     }
   };
 
