@@ -321,5 +321,6 @@
       cursor: 'none'
     });
   }
+  $(window).on('focus', initPlan);
 
 }());
