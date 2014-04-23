@@ -261,12 +261,12 @@
 
   $(document).on('hidden.bs.modal', function(){
     if ($('.station:not(.seen)').length === 0) {
-      svg.selectAll('*').remove();
       initPlan();
     }
   });
 
   var initPlan = function(){
+    svg.selectAll('*').remove();
     $('.line-label.begin-hidden').addClass('hide');
 
     var paths = {}, totalLength;
