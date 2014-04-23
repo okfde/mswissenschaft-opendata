@@ -2,7 +2,7 @@
 (function(){
   'use strict';
   var w = 1920;
-  var h = 1080;
+  var h = $(window).height();
 
   var data = {
     'S7': [
@@ -31,15 +31,15 @@
             ['+9.7%', '-'], ['+29.5%', '=']
           ],
     'U6': [
-            ['62%', '5%'], ['60%', '5%'], ['-', '22%'], ['=', '52.25%'], ['60%', '+'], ['=', '96%']
+            ['60%', '0%'], ['60%', '5%'], ['-', '22%'], ['=', '52.25%'], ['60%', '+'], ['=', '100%']
           ],
     'U9': [
-            ['38%', '5%'], ['40.35%', '5%'], ['+', '22%'], ['=', '52.25%'], ['30%', '+'],
-            ['26%', '+'], ['23%', '=']
+            ['40.35%', '0%'], ['40.35%', '5%'], ['+', '22%'], ['=', '52.25%'], ['30%', '+'],
+            ['20%', '+']
           ],
-    'U7': [
-            ['30%', '52%'], ['40%', '+'], ['68%', '='], ['83%', '+'], ['85%', '=']
-          ]
+    // 'U7': [
+    //         ['30%', '52%'], ['40%', '+'], ['68%', '='], ['83%', '+'], ['85%', '=']
+    //       ]
   };
 
   var stations = {
@@ -78,20 +78,20 @@
       width: 30,
       delay: 1
     },
-    oranienburg: {
-      x: parsePercent('37%', w),
-      y: parsePercent('3.5%', h),
-      height: 30,
-      width: 30,
-      delay: 1
-    },
-    bernau: {
-      x: parsePercent('61%', w),
-      y: parsePercent('3.5%', h),
-      height: 30,
-      width: 30,
-      delay: 1
-    },
+    // oranienburg: {
+    //   x: parsePercent('37%', w),
+    //   y: parsePercent('3.5%', h),
+    //   height: 30,
+    //   width: 30,
+    //   delay: 1
+    // },
+    // bernau: {
+    //   x: parsePercent('61%', w),
+    //   y: parsePercent('3.5%', h),
+    //   height: 30,
+    //   width: 30,
+    //   delay: 1
+    // },
     schoeneberg: {
       x: parsePercent('35%', w),
       y: parsePercent('76.5%', h),
@@ -100,21 +100,21 @@
       delay: 1000,
       rotate: '45'
     },
-    berlinerstrasse: {
-      x: parsePercent('40%', w),
-      y: parsePercent('67.5%', h),
-      height: 35,
-      width: 30,
-      delay: 300,
-      rotate: '45'
-    },
-    mehringdamm: {
-      x: parsePercent('59.25%', w),
-      y: parsePercent('68%', h),
-      height: 30,
-      width: 30,
-      delay: 1400,
-    },
+    // berlinerstrasse: {
+    //   x: parsePercent('40%', w),
+    //   y: parsePercent('67.5%', h),
+    //   height: 35,
+    //   width: 30,
+    //   delay: 300,
+    //   rotate: '45'
+    // },
+    // mehringdamm: {
+    //   x: parsePercent('59.25%', w),
+    //   y: parsePercent('68%', h),
+    //   height: 30,
+    //   width: 30,
+    //   delay: 1400,
+    // },
     tempelhof: {
       x: parsePercent('59.25%', w),
       y: parsePercent('77.5%', h),
@@ -122,42 +122,42 @@
       width: 30,
       delay: 1600,
     },
-    altmariendorf: {
-      x: parsePercent('59.25%', w),
-      y: parsePercent('95%', h),
-      height: 30,
-      width: 30,
-      delay: 2000,
-    },
-    rudow: {
-      x: parsePercent('85%', w),
-      y: parsePercent('95%', h),
-      height: 30,
-      width: 30,
-      delay: 2000,
-    },
-    steglitz: {
-      x: parsePercent('22%', w),
-      y: parsePercent('93.5%', h),
-      height: 30,
-      width: 30,
-      delay: 1900,
-    },
-    neukoelln: {
-      x: parsePercent('69%', w),
-      y: parsePercent('69.5%', h),
-      height: 30,
-      width: 30,
-      delay: 500,
-      rotate: '45'
-    },
-    zoo: {
-      x: parsePercent('29.5%', w),
-      y: parsePercent('50%', h),
-      height: 40,
-      width: 30,
-      delay: 500,
-    },
+    // altmariendorf: {
+    //   x: parsePercent('59.25%', w),
+    //   y: parsePercent('95%', h),
+    //   height: 30,
+    //   width: 30,
+    //   delay: 2000,
+    // },
+    // rudow: {
+    //   x: parsePercent('85%', w),
+    //   y: parsePercent('95%', h),
+    //   height: 30,
+    //   width: 30,
+    //   delay: 2000,
+    // },
+    // steglitz: {
+    //   x: parsePercent('22%', w),
+    //   y: parsePercent('93.5%', h),
+    //   height: 30,
+    //   width: 30,
+    //   delay: 1900,
+    // },
+    // neukoelln: {
+    //   x: parsePercent('69%', w),
+    //   y: parsePercent('69.5%', h),
+    //   height: 30,
+    //   width: 30,
+    //   delay: 500,
+    //   rotate: '45'
+    // },
+    // zoo: {
+    //   x: parsePercent('29.5%', w),
+    //   y: parsePercent('50%', h),
+    //   height: 40,
+    //   width: 30,
+    //   delay: 500,
+    // },
     friedrichstrasse: {
       x: parsePercent('49.1%', w),
       y: parsePercent('33.25%', h),
@@ -319,5 +319,11 @@
   };
 
   initPlan();
+
+  if (window.navigator.userAgent.indexOf('Chromium') !== -1) {
+    $('body').css({
+      cursor: 'none'
+    });
+  }
 
 }());
