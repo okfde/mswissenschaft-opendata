@@ -24,17 +24,28 @@ body {
   margin: 0;
   font-family: 'Open Sans';
   background: url('../img/tiny_grid.png');
+  overflow: hidden;
   /*cursor: none;*/
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+
 }
 
 #title {
-  font-size: 48px;
-  font-weight: bold;
   margin-top: 100px;
   margin-left: 140px;
-  moz-user-select: none;
-      user-select: none;
+}
 
+#title h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+#title h2 {
+  font-size: 32px;
+  padding-left: 40px;
+  margin-top: 10px;
 }
 
 #chart{
@@ -44,6 +55,41 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+}
+
+#credits {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  background: url('../img/okfn-logo.png') no-repeat;
+  height: 80px;
+  padding-left: 80px;
+  width: 380px;
+  font-size: 13px;
+}
+
+.line-label {
+  position: absolute;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#datenportale {
+  left: 200px;
+  top: 320px;
+  -webkit-transform: rotate(45deg);
+}
+
+#verkehrsdaten {
+  left: 90px;
+  top: 460px;
+  -webkit-transform: rotate(45deg);
+}
+
+#openstreetmap {
+  left: 90px;
+  top: 780px;
+  -webkit-transform: rotate(-45deg);
 }
 
 .line {
