@@ -176,6 +176,10 @@ body {
   }
 }
 
+.station rect:hover {
+  stroke: #888;
+}
+
 .station.seen rect {
   fill: #999;
   -webkit-animation: none;
