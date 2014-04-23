@@ -32,6 +32,15 @@ body {
 
 }
 
+.modal-dialog {
+  margin-top: 200px;
+  font-size: 120%;
+}
+
+.modal-title {
+  font-size: 28px;
+}
+
 #title {
   margin-top: 100px;
   margin-left: 140px;
