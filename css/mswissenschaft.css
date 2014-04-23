@@ -92,6 +92,24 @@ body {
   -webkit-transform: rotate(-45deg);
 }
 
+#visualisierungen {
+  left: 1600px;
+  top: 280px;
+  -webkit-transform: rotate(-45deg);
+}
+
+#apps {
+  left: 1735px;
+  top: 480px;
+  -webkit-transform: rotate(-45deg);
+}
+
+#spiele {
+  left: 1700px;
+  top: 790px;
+  -webkit-transform: rotate(45deg);
+}
+
 .line {
   stroke: #000;
   stroke-width: 8;

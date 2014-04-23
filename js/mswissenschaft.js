@@ -267,6 +267,7 @@
   });
 
   var initPlan = function(){
+    $('.line-label.begin-hidden').addClass('hide');
 
     var paths = {}, totalLength;
 
@@ -285,8 +286,10 @@
         .transition()
           .duration(2000)
           .ease('linear')
-          .attr('stroke-dashoffset', 0);
-
+          .attr('stroke-dashoffset', 0)
+          .each("end", function(){
+            $('.line-label.begin-hidden').removeClass('hide');
+          });
     }
 
     var station;
