@@ -98,12 +98,12 @@ img {
 
 #qrcode {
   position: absolute;
-  left: 1245px;
+  left: 1250px;
   background: url('../img/okfnde-qrcode.png') no-repeat;
-  height: 165px;
-  bottom: 10px;
-  padding-left: 170px;
-  padding-top: 120px;
+  height: 130px;
+  bottom: 15px;
+  padding-left: 110px;
+  padding-top: 60px;
   width: 400px;
 }
 
