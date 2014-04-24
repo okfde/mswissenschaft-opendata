@@ -2,7 +2,7 @@
 (function(){
   'use strict';
   var w = 1920;
-  var h = $(window).height();
+  var h = 1080;
 
   var data = {
     'S7': [
