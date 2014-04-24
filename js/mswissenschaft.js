@@ -266,6 +266,9 @@
   });
 
   var initPlan = function(){
+    if (tm) {
+      tm = window.clearTimeout(tm);
+    }
     svg.selectAll('*').remove();
     $('.line-label.begin-hidden').addClass('hide');
 
@@ -314,13 +317,13 @@
     }
   };
 
-  initPlan();
-
   if (window.navigator.userAgent.indexOf('Chromium') !== -1) {
     $('body').css({
       cursor: 'none'
     });
   }
   $(window).on('focus', initPlan);
+
+  var tm = window.setTimeout(initPlan, 500);
 
 }());
