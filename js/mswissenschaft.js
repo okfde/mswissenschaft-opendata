@@ -1,4 +1,4 @@
-/* globals d3: false, console: false, $: false */
+/* globals d3: false, $: false */
 (function(){
   'use strict';
   var w = 1920;
@@ -274,6 +274,10 @@
 
     var paths = {}, totalLength;
 
+    var unhideLabels = function(){
+      $('.line-label.begin-hidden').removeClass('hide');
+    };
+
     for (var key in data) {
       data[key] = generate(data[key]);
 
@@ -290,9 +294,7 @@
           .duration(2000)
           .ease('linear')
           .attr('stroke-dashoffset', 0)
-          .each("end", function(){
-            $('.line-label.begin-hidden').removeClass('hide');
-          });
+          .each('end', unhideLabels);
     }
 
     var station;
